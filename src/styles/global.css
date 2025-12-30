@@ -1,0 +1,91 @@
+@import "tailwindcss";
+
+@tailwind utilities;
+  html {
+  scroll-behavior: smooth;
+}
+ /* =========================
+     SCROLL REVEAL (IN / OUT)
+  ========================= */
+  .section{
+    @apply border-2;
+    scroll-margin-top: 80px;
+  }
+
+  .reveal-section {
+    @apply opacity-0 translate-y-0 scale-95
+           transition-all duration-700 ease-out;
+    will-change: transform, opacity;
+  }
+
+  .header-section{
+    @apply sticky top-0 z-50;
+  }
+  /* ENTRADA */
+  .reveal-section.is-visible {
+    @apply opacity-100 translate-y-0 scale-100 transition-all duration-900 ease-out;
+  }
+  .nav-links a.active {
+    @apply text-sky-800;
+    text-shadow: 0 0 10px rgba(56, 189, 248, 0.9);
+
+  }
+  /* SALIDA */
+  .reveal-section.is-hidden {
+    @apply opacity-0 translate-y-100 scale-95;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    .timeline::before {
+      @apply left-4;
+    }
+
+    .timeline-item {
+      @apply justify-start pl-12 pr-0;
+    }
+
+    .timeline-dot {
+      @apply left-4;
+    }
+  }
+/* =========================
+   Animaciones
+========================= */
+
+@keyframes logoIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px) scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@keyframes floatSoft {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+/** **/
+/** FONT **/
+.press-start-2p-regular {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+}
+/** **/

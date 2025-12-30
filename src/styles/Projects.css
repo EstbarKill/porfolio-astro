@@ -1,0 +1,123 @@
+@import "tailwindcss";
+
+@tailwind utilities;
+
+@layer components {
+  .project-card {
+    @apply relative overflow-hidden rounded-xl shadow-lg;
+  }
+    .project-card-category{
+    @apply absolute w-auto h-auto p-2 justify-self-end;
+  } 
+  .project-card-category span{
+    @apply relative w-auto h-auto px-2 py-1 rounded-full bg-sky-200;
+  }
+  .project-card img {
+    @apply w-full h-56 object-cover transition-transform duration-500;
+  }
+
+  .project-card:hover img {
+    @apply scale-110;
+  }
+
+  .project-overlay {
+    @apply absolute inset-0 bg-black/70
+           flex flex-col justify-end
+           p-6 opacity-0
+           transition-all duration-300
+           text-black;
+  }
+
+  .project-card:hover .project-overlay {
+    @apply opacity-100;
+  }
+
+  .project-overlay h3 {
+    @apply text-white text-lg font-semibold mb-3;
+  }
+
+  .project-btn {
+    @apply inline-block w-fit
+           px-4 py-2
+           rounded-md
+           bg-sky-400 text-white
+           font-medium
+           hover:bg-sky-500
+           transition;
+  }
+}
+
+  /* =========================
+     PROJECTS
+  ========================= */
+  .projects {
+    @apply py-10 relative;
+  }
+
+  .projects-container {
+    @apply max-w-6xl mx-auto px-5;
+  }
+
+  .projects-header {
+    @apply text-center mb-20;
+  }
+
+  .projects-header h2 {
+    @apply text-3xl font-bold text-slate-900;
+  }
+
+  .projects-header p {
+    @apply mt-4 text-slate-600 max-w-xl mx-auto;
+  }
+
+  /* Grid */
+  .projects-grid {
+    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10;
+  }
+
+  /* Card */
+  .project-card {
+    @apply bg-white rounded-xl overflow-hidden
+           border border-slate-100
+           shadow-md transition-all duration-300;
+  }
+
+  .project-card:hover {
+    @apply -translate-y-2 shadow-xl;
+  }
+
+  /* Image */
+  .project-image {
+    @apply relative overflow-hidden;
+  }
+
+  .project-image img {
+    @apply w-full h-48 object-cover transition-transform duration-500;
+  }
+
+  .project-card:hover .project-image img {
+    transform: scale(1.08);
+  }
+
+  /* Body */
+  .project-body {
+    @apply p-6;
+  }
+
+  .project-body h3 {
+    @apply text-lg font-semibold text-slate-900;
+  }
+
+  .project-body p {
+    @apply mt-3 text-sm text-slate-600;
+  }
+
+  /* Tech tags */
+  .project-tech {
+    @apply mt-3 flex flex-wrap gap-2;
+  }
+
+  .project-tech li {
+    @apply text-xs px-3 py-1 rounded-full
+           bg-sky-100 text-sky-600 font-medium;
+  }

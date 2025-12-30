@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@tailwind utilities;
+
+@layer components {
+  /* =========================
+     HERO
+  ========================= */
+  .hero-container {
+    @apply relative overflow-hidden max-w-6xl min-h-170 mx-auto
+           grid grid-cols-1 pt-5 md:grid-cols-2
+           items-center gap-16 px-10 pb-20;
+  }
+
+  /* Texto */
+  .hero-kicker {
+    @apply text-xl
+    uppercase 
+    tracking-widest 
+    text-sky-900 
+    font-semibold;
+    font-family: "Press Start 2P";
+    .hero-ing{
+      opacity: 0.1;
+    }
+  }
+  .hero-kicker:hover{
+    @apply text-blue-800;
+    .hero-ing{
+      opacity: 100;
+      text-shadow: 0 0 20px rgba(56, 191, 248, 0.815);
+      @apply  text-slate-800;
+}
+  }
+  .hero-title {
+    @apply mt-4 text-5xl md:text-4xl font-bold leading-tight text-slate-900;
+  }
+
+  .hero-title span {
+    @apply text-sky-400;
+    text-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+  }
+
+  .hero-description {
+    @apply mt-2 text-slate-600 max-w-xl pl-6;
+  }
+
+  .hero-actions {
+    @apply mt-7 flex gap-10 pl-20;
+  }
+
+  .btn-primary {
+    @apply px-8 py-3 rounded-lg bg-sky-400
+           text-slate-900 font-semibold
+           hover:scale-105 transition;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-3 rounded-lg border border-slate-300
+           text-slate-700 font-medium
+           hover:border-sky-400 hover:text-sky-400 transition hover:scale-105;
+  }
+
+  /* Visual */
+  .hero-visual {
+    @apply flex justify-end md:justify-end;
+  }
+
+  .code-card {
+    @apply bg-gray-300 rounded-xl 
+           text-xs text-emerald-950 font-mono
+           shadow-xl max-w-md w-full justify-center justify-items-center;
+    animation: floatSoft 3s ease-in-out infinite;
+  }
+  .code-card:hover {
+    animation: none;
+    pre{
+      @apply text-red-600 ;
+      animation: floatSoft 2s ease-in-out infinite;
+    }
+    .foto-image{
+      @apply  border-2 border-slate-300;
+      box-shadow: 0 0 20px rgba(63, 171, 221, 0.459);
+    }
+  }
+  .code-card::after {
+    content: "";
+    @apply absolute inset-0 rounded-xl pointer-events-none;
+    
+  }
+
+  .code-image {
+    @apply min-w-2xs max-w-4xl p-5;
+  }
+  .foto-image {
+    @apply w-2xs h-60 rounded-full;
+  }
+  .linkedin-container{
+    @apply justify-self-end-safe   absolute text-xl bg-emerald-300 border-2 border-blue-600 rounded-xl;
+  }
+  .code-link{
+    @apply p-3 text-sky-200 hover:text-sky-600 transition;
+  }
+
+  @keyframe{
+    0%{
+
+    }
+  }
+}

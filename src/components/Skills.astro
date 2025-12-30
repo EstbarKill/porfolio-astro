@@ -1,0 +1,168 @@
+---
+import { skillsData } from "../../public/scripts/skills.data.js";
+import "../styles/Skills.css";
+---
+
+<section class="skills-section">
+  <h1 id="skill-title">Habilidades</h1>
+  <div class="skills-container">
+
+    <!-- LEFT -->
+    <aside class="skill-detail-card">
+      <div class="skill-detail-header">
+        <div id="detail-icon" class="skill-detail-icon"></div>
+        <div>
+          <h3 id="detail-title" class="skill-detail-title"></h3>
+          <span id="detail-years" class="skill-detail-years"></span>
+        </div>
+      </div>
+
+      <p id="detail-desc" class="skill-detail-desc"></p>
+
+      <div class="skill-progress">
+        <div class="skill-progress-labels">
+          <span>Nivel</span>
+          <span id="detail-percent"></span>
+        </div>
+        <div class="skill-progress-bar">
+          <div id="detail-bar" class="skill-progress-fill"></div>
+        </div>
+      </div>
+
+      <ul id="detail-stack" class="skill-stack">
+      </ul>
+    </aside>
+
+    <!-- RIGHT -->
+    <div class="skills-carousel">
+      {skillsData.map((skill, index) => (
+        <article
+          class={`skill-slide ${index === 0 ? "active" : ""}`}
+          data-index={index}
+        >
+          <div class="skill-slide-icon">
+            <i class={skill.icon}></i>
+          </div>
+          <h4>{skill.title}</h4>
+        </article>
+      ))}
+    </div>
+  </div>
+
+  <script>
+    import { skillsData } from "../../public/scripts/skills.data.js";
+
+const slides = document.querySelectorAll(".skill-slide");
+
+let current = 0;
+let interval = null;
+
+const icon = document.getElementById("detail-icon");
+const title = document.getElementById("detail-title");
+const years = document.getElementById("detail-years");
+const desc = document.getElementById("detail-desc");
+const percent = document.getElementById("detail-percent");
+const bar = document.getElementById("detail-bar");
+const stack = document.getElementById("detail-stack");
+
+function renderSkill(index) {
+  const skill = skillsData[index];
+  const levels = skill.stack.map(t => t.level);
+  const percentValue = Math.round(
+    levels.reduce((acc, lvl) => acc + lvl, 0) / levels.length
+  );
+
+  icon.innerHTML = `<img src="${skill.icon}" alt="${skill.title}" class="skill-slide-img" />`;
+  title.textContent = skill.title;
+  years.textContent = `${skill.years} años de experiencia`;
+  desc.textContent = skill.description;
+  bar.style.width = `${percentValue}%`;  
+
+let levelLabel = "";
+
+switch (true) {
+  case percentValue < 40:
+    levelLabel = "Bajo";
+    break;
+
+  case percentValue < 70:
+    levelLabel = "Medio";
+    break;
+
+  default:
+    levelLabel = "Alto";
+}
+percent.textContent = `${percentValue}% · ${levelLabel}`;
+
+  stack.innerHTML = "";
+  skill.stack.forEach(t => {
+  const item = document.createElement("li");
+  item.className = "skill-stack-item";
+  item.innerHTML = `
+    <div class="stack-header">
+      <img src="${t.icon}" alt="${t.name}">
+      <span>${t.name}</span>
+    </div>
+    <div class="stack-bar">
+      <div class="stack-bar-fill block"></div>
+    </div>
+    <span class="detail-percent-stack"></span>
+  `;
+  const fill = item.querySelector(".stack-bar-fill");
+  const detail = item.querySelector(".detail-percent-stack");
+
+  fill.style.width = `${t.level}%`;
+  detail.textContent = `${t.level}%`;
+  stack.appendChild(item);
+  });
+
+  slides.forEach(s => s.classList.remove("active"));
+  slides[index].classList.add("active");
+
+  current = index;
+}
+
+slides.forEach(slide => {
+  slide.addEventListener("click", () => {
+    renderSkill(Number(slide.dataset.index));
+    restartAuto();
+  });
+});
+
+function autoPlay() {
+  stopAuto();
+  interval = setInterval(() => {
+    const next = (current + 1) % skillsData.length;
+    renderSkill(next);
+  }, 5000);
+}
+
+function restartAuto() {
+  clearInterval(interval);
+  autoPlay();
+}
+const detailCard = document.querySelector(".skill-detail-card");
+
+function stopAuto() {
+  clearInterval(interval);
+  interval = null;
+}
+
+function startAuto() {
+  if (!interval) autoPlay();
+}
+detailCard.addEventListener("mouseenter", () => {
+  stopAuto();
+});
+
+detailCard.addEventListener("mouseleave", () => {
+  startAuto();
+});
+
+// Init
+renderSkill(0);
+autoPlay();
+
+
+  </script>
+</section>

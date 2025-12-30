@@ -1,0 +1,64 @@
+---
+import "../../styles/details.css";
+import { projectsData } from "../../../public/scripts/projects.data.js";
+import Layout from "../../layouts/Layout.astro";
+import Header from "../../components/Header.astro";
+
+/* 🔑 OBLIGATORIO */
+export function getStaticPaths() {
+  return projectsData.map(project => ({
+    params: { slug: project.slug },
+    props: { project }
+  }));
+}
+
+/* 📦 RECIBES EL PROYECTO */
+const { project } = Astro.props;
+---
+<Layout title={project.title}>
+  <Header/>
+  <section class="project-detail">
+
+    <!-- Title -->
+    <header class="project-header">
+      <h1 class="project-title">{project.title}</h1>
+      <span class="project-badge">{project.category}</span>
+    </header>
+
+    <!-- Image -->
+    <div class="project-cover-wrapper">
+      <img
+        src={project.cover}
+        alt={project.title}
+        class="project-cover"
+      />
+    </div>
+
+    <!-- Description -->
+    <p class="project-description">
+      {project.description}
+    </p>
+
+    <!-- Technologies -->
+    <h3 class="project-subtitle">Tecnologías utilizadas</h3>
+
+    <ul class="project-tech-list">
+      {project.technologies.map(tech => (
+        <li class="project-tech-item">
+          <span class="tech-dot"></span>
+          {tech}
+        </li>
+      ))}
+    </ul>
+
+    <!-- CTA -->
+    <a
+      href={project.url}
+      target="_blank"
+      class="project-cta"
+    >
+      Ver proyecto en vivo →
+    </a>
+
+  </section>
+</Layout>

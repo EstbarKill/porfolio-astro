@@ -1,0 +1,109 @@
+@import "tailwindcss";
+
+@tailwind utilities;
+
+@layer components {
+.skills-section {
+  @apply min-h-100 py-10;
+}
+#skill-title{
+  @apply p-2 font-bold;
+}
+.skills-section h1{
+  @apply text-center text-4xl font-bold text-slate-900;
+}
+.skills-container {
+  @apply max-w-6xl mx-auto grid md:grid-cols-2 gap-12 items-center p-5;
+}
+/* LEFT CARD */
+.stack-bar {
+  @apply w-full h-2 bg-slate-200 rounded-full overflow-hidden mt-2;
+}
+
+.stack-bar-fill {
+  @apply h-full bg-sky-400 rounded-full transition-all duration-700;
+}
+
+.skill-detail-card {
+  @apply bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-xl
+         transition-transform duration-300 hover:-rotate-1 hover:scale-[1.02]
+         max-h-125 min-h-125 ;
+}
+.skill-detail-header {
+  @apply flex items-center gap-4 mb-4;
+}
+.skill-detail-icon {
+  @apply w-35 h-35 flex items-center justify-center
+         rounded-xl bg-slate-100 dark:bg-slate-700;
+}
+
+.skill-detail-title {
+  @apply text-2xl font-bold;
+}
+
+.skill-detail-years {
+  @apply text-sm text-slate-500;
+}
+
+.skill-detail-desc {
+  @apply text-slate-600 dark:text-slate-300 mb-6;
+}
+
+/* PROGRESS */
+.skill-progress-labels {
+  @apply flex justify-between text-sm mb-1;
+}
+
+.skill-progress-bar {
+  @apply w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden;
+}
+.stack-bar {
+  @apply w-full h-2 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden;
+}
+.skill-progress-fill {
+  @apply h-full bg-gradient-to-r from-sky-400 to-indigo-500 transition-all duration-700;
+}
+.stack-bar-fill {
+  @apply h-full bg-gradient-to-r from-sky-400 to-indigo-500 transition-all duration-700;
+}
+/* STACK */
+.skill-stack {
+  @apply grid grid-cols-2 gap-3 mt-6;
+}
+
+.skill-stack-item {
+  @apply flex items-center gap-2 bg-slate-100 dark:bg-slate-700
+         px-3 py-2 rounded-lg text-sm;
+}
+
+/* RIGHT */
+.skills-carousel {
+  @apply grid grid-cols-2 gap-6;
+}
+
+.skill-slide {
+  @apply cursor-pointer p-6 rounded-xl bg-white dark:bg-slate-800
+         shadow-md text-center transition-all duration-300
+         hover:-translate-y-1 hover:shadow-xl;
+}
+
+.skill-slide.active {
+  @apply ring-2 ring-sky-500 scale-105;
+}
+
+.skill-slide-icon {
+  @apply text-3xl mb-2;
+}
+/* ICONS */
+.skill-slide-img {
+  @apply w-20 h-200 mx-auto object-contain;
+}
+
+.skill-detail-img {
+  @apply w-8 h-8 object-contain;
+}
+
+.skill-stack-item img {
+  @apply w-5 h-5 object-contain;
+}
+}

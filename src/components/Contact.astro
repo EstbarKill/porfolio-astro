@@ -1,0 +1,114 @@
+---
+import "../styles/Contact.css";
+---
+<section class="contact-section">
+  <h2 class="contact-title">Contacto</h2>
+  <div class="contact-grid">
+    <!-- FORM -->
+    <form id="contactForm" class="contact-form">
+      <div class="form-group">
+        <label>Nombre</label>
+        <input type="text" id="name" required placeholder="Tu nombre" />
+      </div>
+
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" id="email" required placeholder="tucorreo@email.com" />
+      </div>
+
+      <div class="form-group">
+        <label>Asunto</label>
+        <input type="text" id="subject" required placeholder="Motivo del contacto" />
+      </div>
+
+      <div class="form-group">
+        <label>Mensaje</label>
+        <textarea id="message" rows="5" required placeholder="Cuéntame el contexto"></textarea>
+      </div>
+
+      <button type="submit" class="contact-btn">
+        Enviar mensaje
+      </button>
+    </form>
+<!-- INFO DIRECTA -->
+    <!-- SOCIAL -->
+<aside class="contact-socials">
+  <!-- REDES -->
+  <h3>Tiempo de crear soluciones tecnologicas...</h3>
+  
+  <div class="contact-info">
+    <div class="contact-info-items" >
+  <p class="contact-subtitle">
+    ¿Tienes un proyecto, una vacante o una idea loca pero rentable?
+    Escríbeme. Respondo humanos, no bots.
+  </p>
+    </div>
+  </div>
+  <div class="social-list">
+    <div class="social-card">
+    <a href="https://www.linkedin.com/in/estevan.cabarcas" target="_blank">
+      <img src="/public/assets/icons/skills/linkedin.png" />
+      LinkedIn
+    </a>  
+    </div>
+<div class="social-card">
+    <a href="mailto:ing.estevan.cabarcas@gmail.com">
+      <img src="/public/assets/icons/skills/email.png" />
+      Email
+    </a>
+  </div>
+<div class="social-card">
+    <a href="https://github.com/EstbarKill" target="_blank">
+      <img src="/public/assets/icons/skills/github.png" />
+      GitHub
+    </a>
+    </div>
+<div class="social-card">
+    <a
+      href="https://wa.me/573012037603"
+      target="_blank"
+    >
+      <img src="/public/assets/icons/skills/whatsapp.png" />
+      WhatsApp
+    </a>
+    </div>
+  </div>
+    <!-- SEPARADOR -->
+  <div class="contact-divider"></div>
+</aside>
+  </div>
+
+  <script>
+    const form = document.getElementById("contactForm");
+
+    form.addEventListener("submit", e => {
+      e.preventDefault();
+
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const subject = document.getElementById("subject").value;
+      const message = document.getElementById("message").value;
+
+      const body = `
+Nombre: ${name}
+Email: ${email}
+
+Mensaje:
+${message}
+      `.trim();
+
+      const mailto = `
+mailto:ing-estevan.cabarcas@gmail.com
+?subject=${encodeURIComponent(subject)}
+&body=${encodeURIComponent(body)}
+      `.replace(/\s/g, "");
+
+      window.location.href = mailto;
+    });
+
+    document.getElementById("copyPhone").addEventListener("click", () => {
+      navigator.clipboard.writeText("+57 301 203 7603");
+      alert("Número copiado 📋");
+    });
+  </script>
+</section>

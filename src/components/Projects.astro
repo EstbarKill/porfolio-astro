@@ -1,0 +1,119 @@
+---
+import "../styles/Projects.css";
+import { projectsData } from "../../public/scripts/projects.data.js";
+---
+<section class="projects">
+  <div class="projects-container">
+    <header class="projects-header">
+      <h2>Proyectos</h2>
+      <p>
+        Algunos proyectos donde apliqué backend, automatización
+        y soluciones orientadas a negocio.
+      </p>
+    </header>
+
+    <div class="projects-grid">
+{projectsData.map((project) => (
+      <article class="project-card group">
+        <div class="project-card-category">
+          <span>{project.category}</span>
+        </div>
+        
+  <img src={project.cover} alt={project.title} />
+
+  <div class="project-overlay">
+    <h3>{project.title}</h3>
+    <a
+      href={`/projects/${project.slug}`}
+      class="project-btn"
+    >
+      Ver detalles →
+    </a>
+  </div>
+</article>
+))}
+      <!-- 
+      <article class="project-card">
+        <div class="project-image">
+          <img src="/public/assets/images/projects/automation.png" alt="Proyecto Automatizacion" />
+        </div>
+
+        <div class="project-body">
+          <h3>Sistema de Automatización</h3>
+
+          <ul class="project-tech">
+            <li>PHP</li>
+            <li>MySQL</li>
+            <li>REST API</li>
+          </ul>
+
+          <p>
+            Plataforma backend para automatizar procesos internos,
+            gestión de datos y generación de reportes.
+          </p>
+        </div>
+      </article>
+
+      
+      <article class="project-card">
+        <div class="project-image">
+          <img src="/assets/projects/project-2.jpg" alt="API REST" />
+        </div>
+
+        <div class="project-body">
+          <h3>API REST Empresarial</h3>
+
+          <ul class="project-tech">
+            <li>Node.js</li>
+            <li>Express</li>
+            <li>JWT</li>
+          </ul>
+
+          <p>
+            API segura para consumo interno y externo,
+            con autenticación y control de permisos.
+          </p>
+        </div>
+      </article>
+
+      
+      <article class="project-card">
+        <div class="project-image">
+          <img src="/public/assets/images/projects/dashboard.png" alt="Dashboard" />
+        </div>
+
+        <div class="project-body">
+          <h3>Dashboard de Control</h3>
+
+          <ul class="project-tech">
+            <li>JavaScript</li>
+            <li>Chart.js</li>
+            <li>Bootstrap</li>
+          </ul>
+          <p>
+            Panel de visualización para monitoreo de métricas
+            y estados de procesos en tiempo real.
+          </p>
+        </div>
+      </article>-->
+    </div>
+  </div>
+</section>
+<script>
+  export const projectsData = [
+  {
+    slug: "dashboard-financiero",
+    title: "Dashboard Financiero",
+    cover: "/projects/dashboard/cover.jpg",
+    images: [
+      "/projects/dashboard/1.png",
+      "/projects/dashboard/2.png"
+    ],
+    description:
+      "Dashboard para análisis financiero con gráficos dinámicos y control de usuarios.",
+    technologies: ["Astro", "Tailwind", "Chart.js", "API REST"],
+    url: "https://tuproyecto.com"
+  }
+];
+
+</script>
