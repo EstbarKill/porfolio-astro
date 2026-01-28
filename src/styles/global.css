@@ -11,6 +11,8 @@
     scroll-margin-top: 50px;
   }
   .reveal-section {
+        @apply opacity-0 translate-y-50 scale-50
+           transition-all duration-300;
   }
   /**Abaut section**/
   #abaut-section{
