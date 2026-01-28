@@ -26,8 +26,14 @@
 
 .skill-detail-card {
   @apply bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-xl
-         transition-transform duration-300 hover:-rotate-1 hover:scale-[1.02]
+         transition-transform duration-300
          max-h-125 min-h-125 ;
+}
+.skill-detail-card:hover {
+  @apply bg-white dark:bg-slate-800 rounded-2xl p-5 shadow-xl
+         transition-transform duration-300
+         max-h-125 min-h-125 ;
+         animation: tumblr 1s infinite;
 }
 .skill-detail-header {
   @apply flex items-center gap-4 mb-4;
@@ -82,8 +88,8 @@
 }
 
 .skill-slide {
-  @apply cursor-pointer p-6 rounded-xl bg-white dark:bg-slate-800
-         shadow-md text-center transition-all duration-300
+  @apply cursor-pointer py-5 px-5 rounded-xl bg-white dark:bg-slate-800
+         shadow-md text-center text-3xl transition-all duration-300
          hover:-translate-y-1 hover:shadow-xl;
 }
 
@@ -92,7 +98,7 @@
 }
 
 .skill-slide-icon {
-  @apply text-3xl mb-2;
+  @apply text-4xl mb-2;
 }
 /* ICONS */
 .skill-slide-img {

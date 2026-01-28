@@ -1,123 +1,115 @@
 @import "tailwindcss";
-
 @tailwind utilities;
 
 @layer components {
-  .project-card {
-    @apply relative overflow-hidden rounded-xl shadow-lg;
-  }
-    .project-card-category{
-    @apply absolute w-auto h-auto p-2 justify-self-end;
-  } 
-  .project-card-category span{
-    @apply relative w-auto h-auto px-2 py-1 rounded-full bg-sky-200;
-  }
-  .project-card img {
-    @apply w-full h-56 object-cover transition-transform duration-500;
-  }
-
-  .project-card:hover img {
-    @apply scale-110;
-  }
-
-  .project-overlay {
-    @apply absolute inset-0 bg-black/70
-           flex flex-col justify-end
-           p-6 opacity-0
-           transition-all duration-300
-           text-black;
-  }
-
-  .project-card:hover .project-overlay {
-    @apply opacity-100;
-  }
-
-  .project-overlay h3 {
-    @apply text-white text-lg font-semibold mb-3;
-  }
-
-  .project-btn {
-    @apply inline-block w-fit
-           px-4 py-2
-           rounded-md
-           bg-sky-400 text-white
-           font-medium
-           hover:bg-sky-500
-           transition;
-  }
-}
 
   /* =========================
-     PROJECTS
+     SECTION
   ========================= */
-  .projects {
-    @apply py-10 relative;
+  .projects-section {
+    @apply py-20 bg-slate-50;
   }
 
   .projects-container {
-    @apply max-w-6xl mx-auto px-5;
+    @apply max-w-7xl mx-auto px-6;
   }
 
+  /* =========================
+     HEADER
+  ========================= */
   .projects-header {
-    @apply text-center mb-20;
+    @apply text-center mb-16;
   }
 
   .projects-header h2 {
-    @apply text-3xl font-bold text-slate-900;
+    @apply text-3xl md:text-4xl font-bold text-slate-900;
   }
 
   .projects-header p {
-    @apply mt-4 text-slate-600 max-w-xl mx-auto;
+    @apply mt-4 text-slate-600 max-w-2xl mx-auto;
   }
 
-  /* Grid */
+  /* =========================
+     GRID
+  ========================= */
   .projects-grid {
-    @apply grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10;
+    @apply grid gap-8 sm:grid-cols-2 lg:grid-cols-3;
   }
 
-  /* Card */
+  /* =========================
+     CARD
+  ========================= */
   .project-card {
-    @apply bg-white rounded-xl overflow-hidden
-           border border-slate-100
-           shadow-md transition-all duration-300;
+    @apply rounded-2xl overflow-hidden
+           bg-white shadow-lg
+           transition-all duration-500
+           hover:shadow-xl;
   }
-
-  .project-card:hover {
-    @apply -translate-y-2 shadow-xl;
+  .projects-resume{
+    @apply relative overflow-hidden bg-white
+           shadow-md transition-all duration-500
+           hover:shadow-xl p-5;
   }
-
-  /* Image */
+.project-bg-overlay{
+      @apply relative overflow-hidden bg-white
+           shadow-md transition-all duration-500
+           hover:shadow-xl;
+}
   .project-image {
-    @apply relative overflow-hidden;
+    @apply h-56 w-full object-cover
+           transition-transform duration-500
+           group-hover:scale-105;
   }
 
-  .project-image img {
-    @apply w-full h-48 object-cover transition-transform duration-500;
+  /* =========================
+     CATEGORY BADGE
+  ========================= */
+  .project-category {
+    @apply absolute top-4 left-4 z-10
+           rounded-full bg-sky-500/90
+           px-3 py-1 text-xs font-semibold
+           text-white;
   }
 
-  .project-card:hover .project-image img {
-    transform: scale(1.08);
+  /* =========================
+     OVERLAY
+  ========================= */
+  .project-overlay {
+    @apply absolute inset-0
+           bg-gradient-to-t
+           from-slate-900/90 via-slate-900/40 to-transparent
+           opacity-0 transition-opacity duration-500
+           group-hover:opacity-100
+           flex flex-col justify-end p-6;
   }
 
-  /* Body */
-  .project-body {
-    @apply p-6;
+  .project-overlay h3 {
+    @apply text-lg font-semibold text-white mb-3;
   }
 
-  .project-body h3 {
-    @apply text-lg font-semibold text-slate-900;
+  /* =========================
+     BUTTON
+  ========================= */
+  .project-btn {
+    @apply inline-flex items-center gap-2
+           w-fit rounded-lg bg-sky-400
+           px-4 py-2 text-sm font-medium
+           text-white transition
+           hover:bg-sky-500;
   }
 
-  .project-body p {
-    @apply mt-3 text-sm text-slate-600;
+  .project-btn span {
+    @apply transition-transform duration-300
+           group-hover:translate-x-1;
   }
+  .projects-card-tecnology{
+    @apply flex gap-1 justify-start pt-5;
 
-  /* Tech tags */
-  .project-tech {
-    @apply mt-3 flex flex-wrap gap-2;
   }
-
-  .project-tech li {
-    @apply text-xs px-3 py-1 rounded-full
-           bg-sky-100 text-sky-600 font-medium;
+  .projects-card-tecnology:hover span{
+      @apply hover:bg-sky-200 hover:text-black transition-all duration-300;
+    }
+  .projects-card-tecnology-name{
+    @apply text-[20px] text-white bg-sky-700 rounded-full px-2 content-center;
   }
+}

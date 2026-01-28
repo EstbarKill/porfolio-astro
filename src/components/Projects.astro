@@ -1,9 +1,12 @@
 ---
-import "../styles/Projects.css";
 import { projectsData } from "../../public/scripts/projects.data.js";
+import "../styles/Projects.css";
 ---
-<section class="projects">
+
+<section id="projects" class="projects-section">
   <div class="projects-container">
+
+    <!-- HEADER -->
     <header class="projects-header">
       <h2>Proyectos</h2>
       <p>
@@ -12,108 +15,49 @@ import { projectsData } from "../../public/scripts/projects.data.js";
       </p>
     </header>
 
+    <!-- GRID -->
     <div class="projects-grid">
-{projectsData.map((project) => (
-      <article class="project-card group">
-        <div class="project-card-category">
-          <span>{project.category}</span>
-        </div>
-        
-  <img src={project.cover} alt={project.title} />
+      {projectsData.map(project => (
+        <article class="project-card group">
+          <div class="project-bg-overlay">
+          <img
+            src={project.cover}
+            alt={project.title}
+            class="project-image"
+          />
 
-  <div class="project-overlay">
-    <h3>{project.title}</h3>
-    <a
-      href={`/projects/${project.slug}`}
-      class="project-btn"
-    >
-      Ver detalles →
-    </a>
-  </div>
-</article>
-))}
-      <!-- 
-      <article class="project-card">
-        <div class="project-image">
-          <img src="/public/assets/images/projects/automation.png" alt="Proyecto Automatizacion" />
-        </div>
+          <span class="project-category">
+            {project.category}
+          </span>
 
-        <div class="project-body">
-          <h3>Sistema de Automatización</h3>
+          <div class="project-overlay">
+            <h3>{project.title}</h3>
 
-          <ul class="project-tech">
-            <li>PHP</li>
-            <li>MySQL</li>
-            <li>REST API</li>
-          </ul>
-
-          <p>
-            Plataforma backend para automatizar procesos internos,
-            gestión de datos y generación de reportes.
-          </p>
-        </div>
-      </article>
-
-      
-      <article class="project-card">
-        <div class="project-image">
-          <img src="/assets/projects/project-2.jpg" alt="API REST" />
-        </div>
-
-        <div class="project-body">
-          <h3>API REST Empresarial</h3>
-
-          <ul class="project-tech">
-            <li>Node.js</li>
-            <li>Express</li>
-            <li>JWT</li>
-          </ul>
-
-          <p>
-            API segura para consumo interno y externo,
-            con autenticación y control de permisos.
-          </p>
-        </div>
-      </article>
-
-      
-      <article class="project-card">
-        <div class="project-image">
-          <img src="/public/assets/images/projects/dashboard.png" alt="Dashboard" />
-        </div>
-
-        <div class="project-body">
-          <h3>Dashboard de Control</h3>
-
-          <ul class="project-tech">
-            <li>JavaScript</li>
-            <li>Chart.js</li>
-            <li>Bootstrap</li>
-          </ul>
-          <p>
-            Panel de visualización para monitoreo de métricas
-            y estados de procesos en tiempo real.
-          </p>
-        </div>
-      </article>-->
+            <a
+              href={`/projects/${project.slug}`}
+              class="project-btn"
+            >
+              Ver detalles
+              <span>→</span>
+            </a>
+          </div>
+          </div>
+          <div class="projects-resume">
+            <div class="projects-card-title">
+              <h3>{project.title}</h3>
+              <span class="projects-card-category">
+                {project.description}
+              </span>
+            </div>
+            <div class="projects-card-tecnology">
+              {project.technologies.map(tech => (
+                <span class="projects-card-tecnology-name">{tech}</span>
+              ))}
+              </div>
+          </div>
+        </article>
+      ))}
     </div>
+
   </div>
 </section>
-<script>
-  export const projectsData = [
-  {
-    slug: "dashboard-financiero",
-    title: "Dashboard Financiero",
-    cover: "/projects/dashboard/cover.jpg",
-    images: [
-      "/projects/dashboard/1.png",
-      "/projects/dashboard/2.png"
-    ],
-    description:
-      "Dashboard para análisis financiero con gráficos dinámicos y control de usuarios.",
-    technologies: ["Astro", "Tailwind", "Chart.js", "API REST"],
-    url: "https://tuproyecto.com"
-  }
-];
-
-</script>

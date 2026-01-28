@@ -1,5 +1,9 @@
 @import "tailwindcss";
-
+@theme {
+  --breakpoint-xs: 30rem;
+  --breakpoint-2xl: 100rem;
+  --breakpoint-3xl: 120rem;
+}
 @tailwind utilities;
 
 @layer components {
@@ -7,46 +11,55 @@
      HERO
   ========================= */
   .hero-container {
-    @apply relative overflow-hidden max-w-6xl min-h-170 mx-auto
-           grid grid-cols-1 pt-5 md:grid-cols-2
-           items-center gap-16 px-10 pb-20;
+    @apply relative overflow-hidden max-w-6xl mx-auto
+         grid grid-cols-1 md:grid-cols-2
+         items-center
+         gap-8 md:gap-16
+         px-4 sm:px-6 md:px-10 py-10
+         md:py-15;
   }
-
   /* Texto */
   .hero-kicker {
-    @apply text-xl
-    uppercase 
-    tracking-widest 
-    text-sky-900 
-    font-semibold;
+    @apply text-sm sm:text-base md:text-xl
+         uppercase tracking-widest
+         text-black font-semibold;
     font-family: "Press Start 2P";
-    .hero-ing{
-      opacity: 0.1;
-    }
   }
-  .hero-kicker:hover{
+  .hero-kicker .hero-ing {
+    opacity: 0.4;
+    font-size: 1rem;
+  }
+  .hero-kicker:hover {
     @apply text-blue-800;
-    .hero-ing{
+    .hero-ing {
       opacity: 100;
       text-shadow: 0 0 20px rgba(56, 191, 248, 0.815);
-      @apply  text-slate-800;
-}
+      @apply text-slate-900;
+    }
   }
   .hero-title {
-    @apply mt-4 text-5xl md:text-4xl font-bold leading-tight text-slate-900;
+    @apply mt-4
+         text-3xl sm:text-4xl md:text-5xl
+         font-bold leading-tight text-slate-900;
   }
 
   .hero-title span {
-    @apply text-sky-400;
-    text-shadow: 0 0 20px rgba(56, 189, 248, 0.35);
+    @apply text-sky-600;
+    text-shadow: 0 0 20px rgba(3, 9, 12, 0.35);
   }
 
   .hero-description {
-    @apply mt-2 text-slate-600 max-w-xl pl-6;
+    @apply mt-4 text-slate-600
+         text-base sm:text-lg md:text-xl
+         max-w-xl
+         pl-0 sm:pl-4 md:pl-6;
   }
 
   .hero-actions {
-    @apply mt-7 flex gap-10 pl-20;
+    @apply mt-6
+         flex flex-col sm:flex-row
+         gap-4 sm:gap-6 md:gap-10
+         pl-0 sm:pl-10 md:pl-20;
   }
 
   .btn-primary {
@@ -63,48 +76,66 @@
 
   /* Visual */
   .hero-visual {
-    @apply flex justify-end md:justify-end;
+    @apply flex justify-center md:justify-end
+         mt-10 md:mt-0;
   }
-
   .code-card {
-    @apply bg-gray-300 rounded-xl 
-           text-xs text-emerald-950 font-mono
-           shadow-xl max-w-md w-full justify-center justify-items-center;
+    @apply bg-gray-300 rounded-xl font-mono
+         grid grid-cols-1 justify-items-center
+         gap-3 sm:gap-4
+         p-5 sm:p-5
+         shadow-xl
+         max-w-xs sm:max-w-sm md:max-w-xl
+         w-full;
     animation: floatSoft 3s ease-in-out infinite;
   }
+  pre {
+    @apply text-blue-800
+        sm:text-[11px]
+        md:text-[10px]
+        lg:text-[12px]
+        text-[10px]
+         p-4
+         max-w-120
+  }
+
   .code-card:hover {
+    box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.5);
+    transform: scale(1.02);
     animation: none;
-    pre{
-      @apply text-red-600 ;
+    pre {
+      @apply text-red-600;
       animation: floatSoft 2s ease-in-out infinite;
     }
-    .foto-image{
-      @apply  border-2 border-slate-300;
+    .foto-image {
+      @apply border-2 border-slate-300;
       box-shadow: 0 0 20px rgba(63, 171, 221, 0.459);
     }
   }
   .code-card::after {
     content: "";
     @apply absolute inset-0 rounded-xl pointer-events-none;
-    
   }
 
   .code-image {
-    @apply min-w-2xs max-w-4xl p-5;
+    @apply min-w-2xs max-w-4xl justify-items-center;
   }
   .foto-image {
-    @apply w-2xs h-60 rounded-full;
-  }
-  .linkedin-container{
-    @apply justify-self-end-safe   absolute text-xl bg-emerald-300 border-2 border-blue-600 rounded-xl;
-  }
-  .code-link{
-    @apply p-3 text-sky-200 hover:text-sky-600 transition;
+    @apply w-40 h-40 sm:w-48 sm:h-48 md:w-56 md:h-60
+         rounded-full object-cover;
   }
 
-  @keyframe{
-    0%{
+  .linkedin-container {
+    @apply 
+         relative mt-3 justify-self-end content-center
+         sm:top-4 sm:right-4
+         text-sm sm:text-xl
+         bg-emerald-400
+         border-2 border-blue-600
+         rounded-xl;
+  }
 
-    }
+  .code-link {
+    @apply p-3 text-sky-800 hover:text-sky-600 transition;
   }
 }

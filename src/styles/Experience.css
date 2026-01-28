@@ -6,9 +6,8 @@
      EXPERIENCE
   ========================= */
   .experience {
-    @apply p-5 relative;
+    @apply p-8 relative;
   }
-
   .experience-container {
     @apply max-w-6xl mx-auto px-5;
   }
@@ -18,16 +17,16 @@
   }
 
   .experience-header h2 {
-    @apply text-3xl font-bold;
+    @apply text-4xl font-bold;
   }
 
   .experience-header p {
-    @apply mt-4 text-slate-600 max-w-xl mx-auto;
+    @apply text-xl mt-4 text-slate-600 max-w-xl mx-auto;
   }
 
   /* Timeline */
   .timeline {
-    @apply relative;
+    @apply relative flex flex-col ;
   }
 
   .timeline::before {
@@ -37,7 +36,7 @@
   }
 
   .timeline-item {
-    @apply relative flex mb-16;
+    @apply relative flex mb-18;
   }
 
   .timeline-item.left {
@@ -57,8 +56,9 @@
 
   /* Card */
   .timeline-card {
-    @apply bg-white rounded-xl p-6 max-w-md shadow-md
+    @apply bg-white rounded-xl p-5 max-w-md shadow-md
            border border-slate-100 transition;
+    box-shadow: 7px 7px 100px rgba(18, 21, 22, 0.26);
   }
 
   .timeline-card:hover {
@@ -66,22 +66,21 @@
   }
 
   .timeline-date {
-    @apply text-sm text-sky-400 font-semibold;
+    @apply text-xl text-sky-400 font-semibold;
   }
 
   .timeline-card h3 {
-    @apply mt-2 font-semibold text-lg;
+    @apply mt-2 text-xl font-semibold text-lg;
   }
 
   .timeline-card h4 {
-    @apply text-sm text-slate-500 mb-3;
+    @apply text-sm font-semibold font-serif text-slate-500 mb-2;
   }
-
   .timeline-card p {
-    @apply text-slate-600 text-sm mb-3;
+    @apply text-slate-600 text-xl mb-2;
   }
 
   .timeline-card ul {
-    @apply list-disc list-inside text-sm text-slate-600;
+    @apply list-disc list-inside text-xl ml-8 text-slate-600;
   }
 }

@@ -8,7 +8,11 @@
      ABOUT
   ========================= */
   .about {
-    @apply p-20;
+    @apply p-20 relative;
+  position: relative;
+  z-index: 1;
+    min-height: 100vh;
+  display: flex;
   }
 
   .about-container {
@@ -18,41 +22,47 @@
   }
 
   .about-content h2 {
-    @apply text-3xl font-bold text-slate-900;
+    @apply flex justify-center text-5xl font-bold text-slate-900 mb-10;
   }
 
   .about-content p {
-    @apply mt-6 text-slate-600 max-w-xl;
+    @apply mt-3 text-slate-800 max-w-xl;
   }
 
   /* Highlights */
   .about-highlights {
-    @apply mt-10 flex gap-8 flex-wrap;
+    @apply mt-10 flex gap-5 flex-wrap;
   }
 
   .highlight {
-    @apply flex flex-col;
+    @apply 
+           items-center text-center
+           p-2 rounded-lg;
   }
 
   .highlight span {
-    @apply text-2xl font-bold text-sky-400;
+    @apply text-xl font-bold text-sky-800;
   }
 
   .highlight p {
-    @apply text-sm text-slate-500;
+    @apply text-sm text-slate-700;
   }
 
   /* Visual */
   .about-visual {
-    @apply flex justify-center md:justify-end;
+    @apply flex-2 justify-self-end md:justify-end;
+        animation: floatSoft 4s ease-in-out infinite;
   }
 
   .about-card {
-    @apply relative bg-white rounded-xl p-8 max-w-sm
+    @apply relative bg-white rounded-xl p-4 max-w-sm
            border border-slate-100 shadow-md;
-    animation: floatSoft 4s ease-in-out infinite;
-  }
 
+  }
+  .about-image {
+    @apply relative justify-self-center w-75 h-75 rounded-full;   
+    background: linear-gradient(180deg,  rgba(102, 144, 233, 0.13), #ffffff);
+  }
   .about-card p {
     @apply text-slate-700 italic;
   }

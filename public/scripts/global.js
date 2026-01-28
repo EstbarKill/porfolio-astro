@@ -20,6 +20,9 @@ const observer = new IntersectionObserver(
 document.querySelectorAll(".reveal-section").forEach(section => {
   observer.observe(section);
 });
+document.querySelectorAll(".reveal-section-container").forEach(section => {
+  observer.observe(section);
+});
 
 document.addEventListener("DOMContentLoaded", () => {
   const sections = document.querySelectorAll("section[id]");
@@ -45,5 +48,25 @@ document.addEventListener("DOMContentLoaded", () => {
 
   sections.forEach(section => observer.observe(section));
 });
+
+  const bg = document.querySelector("#abaut-section [data-parallax]");
+  let lastScroll = 0;
+  let ticking = false;
+
+  function onScroll() {
+    lastScroll = window.scrollY;
+    if (!ticking) {
+      requestAnimationFrame(update);
+      ticking = true;
+    }
+  }
+
+  function update() {
+    const speed = 10; // profundidad elegante
+    bg.style.transform = `translateY(${lastScroll * speed}px)`;
+    ticking = false;
+  }
+
+  window.addEventListener("scroll", onScroll);
 
 //

@@ -12,12 +12,12 @@
   }
 
   .nav-container {
-    @apply max-w-7xl mx-auto py-2 flex items-center justify-between;
+    @apply max-w-7xl mx-auto flex items-center justify-between py-2 sm:px-3;
   }
 
   /* ===== Brand ===== */
   .brand {
-    @apply flex items-center gap-3 no-underline;
+    @apply flex items-center gap-3 no-underline sm:px-5;
   }
 
   .logo-ec {
@@ -69,7 +69,7 @@
 
   /* ===== Mobile ===== */
   .menu-toggle {
-    @apply md:hidden flex flex-col gap-1.5;
+    @apply md:hidden md:px-5 flex flex-col gap-1.5 cursor-pointer;
   }
 
   .menu-toggle span {
@@ -77,16 +77,15 @@
   }
 
   .mobile-menu {
-    @apply hidden md:hidden px-5 pb-4;
+    @apply hidden md:hidden px-5 pb-4 justify-items-end;
     animation: fadeUp 0.3s ease-out;
   }
-
   .mobile-menu.open {
     @apply block;
   }
 
   .mobile-menu ul {
-    @apply flex flex-col gap-4 font-medium;
+    @apply flex flex-col gap-4 font-medium text-end;
   }
 
   .mobile-menu a {

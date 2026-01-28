@@ -7,6 +7,7 @@ import Abaut from '../components/Abaut.astro'
 import Projects from '../components/Projects.astro';
 import Skills from '../components/Skills.astro';
 import Contact from '../components/Contact.astro';
+import Footer from '../components/Footer.astro';
 
 // Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
 // Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
@@ -17,13 +18,26 @@ import Contact from '../components/Contact.astro';
 		<Header/>
 	</section>
 	<section id="hero-section" class="section reveal-section">
-		<Hero />
-	</section>
+  <div class="hero-section-one">
+    <div class="hero-section-two">
+      <div class="hero-section-three">
+        <Hero />
+      </div>
+    </div>
+  </div>
+</section>
+
 	<section id="experience-section" class="section reveal-section">
 		<Experience/>
 	</section>
 	<section id="abaut-section" class="section reveal-section">
-		<Abaut/>
+	  <!-- Contenido -->
+		<Abaut/>	
+		  <!-- Fondo parallax -->
+  <div class="about-bg" data-parallax>
+	
+  </div>
+
 	</section>
 	<section id="projects-section" class="section reveal-section">
 		<Projects/>
@@ -31,7 +45,48 @@ import Contact from '../components/Contact.astro';
 	<section id="skills-section" class="section reveal-section">
 		<Skills/>
 	</section>
-		<section id="contact-section" class="section reveal-section">
+	<section id="contact-section" class="section reveal-section">
 		<Contact/>
 	</section>
+	<section id="footer-section" class="section reveal-section">
+		<Footer/>
+	</section>
 </Layout>
+<script>
+	// Lightweight transform-based parallax for .about-bg
+	(function () {
+		const bg = document.querySelector('.about-bg');
+		if (!bg) return;
+
+		let latestScroll = 0;
+		let ticking = false;
+
+		function onScroll() {
+			latestScroll = window.scrollY || window.pageYOffset;
+			requestTick();
+		}
+
+		function requestTick() {
+			if (!ticking) {
+				requestAnimationFrame(update);
+			}
+			ticking = true;
+		}
+
+		function update() {
+			ticking = false;
+			const rect = bg.parentElement.getBoundingClientRect();
+			// only move while section is in viewport
+			const sectionTop = rect.top + window.scrollY;
+			const distance = latestScroll - sectionTop;
+			// move at slower rate (parallax factor)
+			const factor = 0.25;
+			const translate = Math.round(distance * factor);
+			bg.style.transform = `translateY(${translate}px)`;
+		}
+
+		window.addEventListener('scroll', onScroll, { passive: true });
+		// initial position
+		requestTick();
+	})();
+</script>

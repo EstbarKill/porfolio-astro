@@ -2,7 +2,7 @@ export const skillsData = [
   {
     id: "backend",
     title: "Backend",
-    years: 4,
+    years: 2,
     icon: "/assets/icons/skills/backend.png",
     description: "Desarrollo de APIs, lógica de negocio y arquitecturas escalables.",
     stack: [
@@ -29,7 +29,7 @@ export const skillsData = [
   {
     id: "automation",
     title: "Automatización",
-    years: 3,
+    years: 1,
     icon: "/assets/icons/skills/automation.png",
     description: "Optimización de procesos mediante scripts y bots.",
     stack: [
